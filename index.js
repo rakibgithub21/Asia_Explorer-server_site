@@ -49,7 +49,9 @@ async function run() {
         })
 
         app.get('/home-tour', async (req, res) => {
-           
+            const cursor = touristCollection.find().limit(6)
+            const result = await cursor.toArray()
+            res.send(result)
         })
 
         app.get('/tourist-spot', async (req, res) => {
