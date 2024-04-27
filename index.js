@@ -30,6 +30,14 @@ async function run() {
 
         const touristCollection = client.db("toursDB").collection('tours')
 
+        const countryCollection = client.db("toursDB").collection('countryCollection')
+
+        app.get('/country', async (req, res) => {
+            const cursor = countryCollection.find()
+            const result = await cursor.toArray()
+            res.send(result)
+        })
+
         app.get('/tourist-spot/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
@@ -59,6 +67,8 @@ async function run() {
             const result = await cursor.toArray()
             res.send(result)
         })
+
+       
 
         app.put('/update/:id', async (req, res) => {
             const id = req.params.id;
@@ -99,6 +109,7 @@ async function run() {
             res.send(result)
 
         })
+ 
 
 
 
