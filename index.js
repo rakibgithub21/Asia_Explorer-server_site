@@ -37,6 +37,8 @@ async function run() {
             res.send(result)
         })
 
+        
+
         app.get('/tourist-spot-email/:email', async (req, res) => {
             const email = req.params.email;
             const query = { email: email };
@@ -44,6 +46,10 @@ async function run() {
             const result = await cursor.toArray()
             res.send(result)
 
+        })
+
+        app.get('/home-tour', async (req, res) => {
+           
         })
 
         app.get('/tourist-spot', async (req, res) => {
