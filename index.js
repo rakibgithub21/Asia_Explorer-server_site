@@ -32,7 +32,9 @@ async function run() {
         
         app.get('/tourist-spot/:id', async (req, res) => {
             const id = req.params.id;
-            
+            const query = { _id: new ObjectId(id) }
+            const result = await touristCollection.findOne(query)
+            res.send(result)
         })
 
         app.get('/tourist-spot', async (req, res) => {
