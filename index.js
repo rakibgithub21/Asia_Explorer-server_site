@@ -29,7 +29,7 @@ async function run() {
         // Send a ping to confirm a successful connection
 
         const touristCollection = client.db("toursDB").collection('tours')
-        
+
         app.get('/tourist-spot/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
@@ -43,12 +43,36 @@ async function run() {
             const cursor = touristCollection.find(query);
             const result = await cursor.toArray()
             res.send(result)
-            
+
         })
 
         app.get('/tourist-spot', async (req, res) => {
             const cursor = touristCollection.find();
             const result = await cursor.toArray()
+            res.send(result)
+        })
+
+        app.put('/update/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) }
+            const options = { upsert: true }
+            const data = req.body;
+            const updateDoc = {
+                $set: {
+                    image: data.image,
+                    tourist_spot: data.tourist_spot,
+                    country: data.country,
+                    location: data.location,
+                    description: data.description,
+                    cost: data.cost,
+                    seasonality: data.seasonality,
+                    travel: data.travel,
+                    visitor: data.visitor,
+                    email: data.email,
+                    name: data.name
+                }
+            }
+            const result = await touristCollection.updateOne(filter, updateDoc, options)
             res.send(result)
         })
 
