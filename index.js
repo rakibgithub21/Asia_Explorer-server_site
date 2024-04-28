@@ -29,11 +29,17 @@ async function run() {
         // Send a ping to confirm a successful connection
 
         const touristCollection = client.db("toursDB").collection('tours')
-
         const countryCollection = client.db("toursDB").collection('countryCollection')
+        const sliderCollection = client.db("toursDB").collection('sliderCollection')
 
         app.get('/country', async (req, res) => {
             const cursor = countryCollection.find()
+            const result = await cursor.toArray()
+            res.send(result)
+        })
+
+        app.get('/slider', async (req, res) => {
+            const cursor = sliderCollection.find()
             const result = await cursor.toArray()
             res.send(result)
         })
