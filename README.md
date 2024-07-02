@@ -60,7 +60,6 @@ To run this project, you will need to add the following environment variables to
     USER_NAME=mongodb database user name
     USER_PASSWORD=mongodb databse user password
     ACCESS_TOKEN_SECRET=for jwt your secret key [its up to you ]
-    STRIPE_SECRET_KEY=sk_test_[add your own stripe key]
     ```
 
 Make sure to keep these values secure and do not expose them in public repositories.
