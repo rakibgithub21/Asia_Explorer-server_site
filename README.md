@@ -79,7 +79,7 @@ To start the development server using `nodemon`, run:
 
 Below is a brief explanation of the provided code and what additional setup is needed:
 
-1. **Dependencies**: The project uses `express`, `cors`, `jsonwebtoken`, and `stripe`. These should already be installed as part of your dependencies.
+1. **Dependencies**: The project uses `express`, `cors`, `jsonwebtoken`. These should already be installed as part of your dependencies.
 
 2. **Environment Configuration**: The project uses environment variables for sensitive information. Make sure you have a `.env` file with the necessary keys.
 
